@@ -1,176 +1,234 @@
-import './style.css';
-import questionsData from './questions.json';
+import "./style.css";
+import questionsData from "./questions.json";
 
 const MAX_MONEY = 600;
+const TOTAL_QUESTIONS = questionsData.length;
 
 let currentQuestionIndex = 0;
 let totalMoney = 0;
+let moneyAnimationFrame = null;
 
-// Elementos del DOM
-const moneyAmountEl = document.getElementById('money-amount');
-const moneyDisplayEl = document.getElementById('money-display');
-const questionCard = document.getElementById('question-card');
-const prizeTag = document.getElementById('prize-tag');
-const questionText = document.getElementById('question-text');
-const answerInput = document.getElementById('answer-input');
-const answerForm = document.getElementById('answer-form');
-const feedbackMessage = document.getElementById('feedback-message');
-const submitBtn = document.getElementById('submit-btn');
+const moneyAmountEl = document.getElementById("money-amount");
+const moneyDisplayEl = document.getElementById("money-display");
+const progressLabel = document.getElementById("progress-label");
+const progressFill = document.getElementById("progress-fill");
+const questionCard = document.getElementById("question-card");
+const prizeTag = document.getElementById("prize-tag");
+const statusPill = document.getElementById("status-pill");
+const statusLine = document.getElementById("status-line");
+const questionText = document.getElementById("question-text");
+const answerInput = document.getElementById("answer-input");
+const answerForm = document.getElementById("answer-form");
+const feedbackMessage = document.getElementById("feedback-message");
+const submitBtn = document.getElementById("submit-btn");
 
-// Modal Elements
-const modal = document.getElementById('modal');
-const modalTitle = document.getElementById('modal-title');
-const modalSubtitle = document.getElementById('modal-subtitle');
-const modalMoney = document.getElementById('modal-money');
-const modalMessage = document.getElementById('modal-message');
-const restartBtn = document.getElementById('restart-btn');
+const modal = document.getElementById("modal");
+const modalContent = document.querySelector(".modal-content");
+const modalTitle = document.getElementById("modal-title");
+const modalSubtitle = document.getElementById("modal-subtitle");
+const modalMoney = document.getElementById("modal-money");
+const modalMessage = document.getElementById("modal-message");
+const restartBtn = document.getElementById("restart-btn");
 
 function normalizar(texto) {
   return texto
     .toLowerCase()
     .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "") // Quitar tildes
-    .replace(/\s+/g, ""); // Quitar espacios
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]/g, "");
+}
+
+function formatMoney(amount) {
+  return new Intl.NumberFormat("es-ES").format(amount);
+}
+
+function animateValue(from, to, duration, onUpdate, onComplete) {
+  const start = performance.now();
+
+  function step(timestamp) {
+    const progress = Math.min((timestamp - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const value = Math.round(from + (to - from) * eased);
+
+    onUpdate(value);
+
+    if (progress < 1) {
+      moneyAnimationFrame = requestAnimationFrame(step);
+      return;
+    }
+
+    moneyAnimationFrame = null;
+    onComplete?.();
+  }
+
+  moneyAnimationFrame = requestAnimationFrame(step);
 }
 
 function updateMoneyUI(amount) {
-  // Animación tipo tragaperras para los números
-  let current = parseInt(moneyAmountEl.innerText) || 0;
-  const target = amount;
-  const diff = target - current;
-  const steps = 20;
-  const stepValue = diff / steps;
-  let currentStep = 0;
+  const currentValue = Number.parseInt(moneyAmountEl.dataset.value || "0", 10);
 
-  moneyDisplayEl.classList.add('pulse');
+  if (moneyAnimationFrame) {
+    cancelAnimationFrame(moneyAnimationFrame);
+    moneyAnimationFrame = null;
+  }
 
-  const interval = setInterval(() => {
-    currentStep++;
-    current += stepValue;
-    moneyAmountEl.innerText = Math.floor(current);
+  moneyDisplayEl.classList.add("pulse");
 
-    if (currentStep >= steps) {
-      clearInterval(interval);
-      moneyAmountEl.innerText = target;
-      moneyDisplayEl.classList.remove('pulse');
-    }
-  }, 30);
+  animateValue(
+    currentValue,
+    amount,
+    520,
+    (nextValue) => {
+      moneyAmountEl.dataset.value = String(nextValue);
+      moneyAmountEl.innerText = formatMoney(nextValue);
+    },
+    () => {
+      moneyDisplayEl.classList.remove("pulse");
+    },
+  );
+}
+
+function updateProgressUI() {
+  const visibleQuestion = Math.min(currentQuestionIndex + 1, TOTAL_QUESTIONS);
+  const progress = TOTAL_QUESTIONS
+    ? (visibleQuestion / TOTAL_QUESTIONS) * 100
+    : 0;
+
+  progressLabel.innerText =
+    currentQuestionIndex < TOTAL_QUESTIONS
+      ? `Pregunta ${visibleQuestion} de ${TOTAL_QUESTIONS}`
+      : "Juego completo";
+
+  statusPill.innerText =
+    currentQuestionIndex < TOTAL_QUESTIONS
+      ? `Ronda ${visibleQuestion}`
+      : "Final";
+
+  progressFill.style.width = `${Math.max(progress, 8)}%`;
+}
+
+function clearFeedback() {
+  feedbackMessage.className = "feedback-message";
+  feedbackMessage.innerText = "";
+}
+
+function setFeedback(message, type) {
+  feedbackMessage.className = `feedback-message show ${type}`;
+  feedbackMessage.innerText = message;
 }
 
 function loadNextQuestion() {
-  if (currentQuestionIndex >= questionsData.length) {
-    // Te quedaste sin preguntas, pero te llevas el total + consolación hasta 600
-    endGame(true, "Te has quedado sin preguntas.");
+  if (currentQuestionIndex >= TOTAL_QUESTIONS) {
+    endGame(false, "Te has quedado sin preguntas.");
     return;
   }
 
-  const q = questionsData[currentQuestionIndex];
+  const question = questionsData[currentQuestionIndex];
+  const availableToWin = Math.max(
+    0,
+    Math.min(question.prize, MAX_MONEY - totalMoney),
+  );
 
-  // Calcular el premio con el CAP
-  let availableToWin = q.prize;
-  if (totalMoney + q.prize > MAX_MONEY) {
-    availableToWin = MAX_MONEY - totalMoney;
-  }
+  updateProgressUI();
 
-  prizeTag.innerText = `Premio: ${availableToWin}€`;
-  questionText.innerText = q.question;
-  answerInput.value = '';
-  feedbackMessage.className = 'feedback-message';
-  feedbackMessage.innerText = '';
+  prizeTag.innerText = `Premio de esta ronda: ${formatMoney(availableToWin)} EUR`;
+  questionText.innerText = question.question;
+  statusLine.innerText =
+    availableToWin > 0
+      ? "Escribe la respuesta y pulsa el boton para seguir sumando."
+      : "Ya has alcanzado el maximo. Esta ronda es solo para lucirse.";
 
-  // Guardamos el premio real disponible temporalmente en el form
-  answerForm.dataset.currentPrize = availableToWin;
-
+  answerForm.dataset.currentPrize = String(availableToWin);
+  answerInput.value = "";
+  answerInput.disabled = false;
+  submitBtn.disabled = false;
+  clearFeedback();
   answerInput.focus();
 }
 
-function endGame(isWin, customReason = "") {
+function endGame(hitJackpot, customReason = "") {
   setTimeout(() => {
-    modal.style.display = 'flex';
+    const missingMoney = Math.max(MAX_MONEY - totalMoney, 0);
 
-    if (totalMoney >= MAX_MONEY) {
-      // Ganó el jackpot
-      modalTitle.innerText = "¡JACKPOT!";
-      modalSubtitle.innerText = "Has alcanzado el premio máximo.";
-      modalMessage.innerText = "¡Increíble jugada! Eres un genio.";
-      document.querySelector('.modal-content').classList.remove('lose');
+    modal.style.display = "flex";
+    updateProgressUI();
+
+    if (hitJackpot || totalMoney >= MAX_MONEY) {
+      modalContent.classList.remove("lose");
+      modalTitle.innerText = "JACKPOT";
+      modalSubtitle.innerText = "Has alcanzado el premio maximo.";
+      modalMessage.innerText =
+        "Increible jugada. Has cerrado la partida con todo el bote.";
     } else {
-      // Se acabaron las preguntas o no alcanzó el máximo
-      const missing = MAX_MONEY - totalMoney;
-      modalTitle.innerText = "¡JUEGO TERMINADO!";
-      modalSubtitle.innerText = "Fin de las preguntas";
-      modalMessage.innerText = `${customReason}\nComo premio de consolación te sumamos los ${missing}€ que te faltaban para llegar a 600€!!`;
-      document.querySelector('.modal-content').classList.add('lose');
+      modalContent.classList.add("lose");
+      modalTitle.innerText = "Juego terminado";
+      modalSubtitle.innerText = "No quedaban mas preguntas.";
+      modalMessage.innerText = `${customReason} Como premio de cierre te sumamos ${formatMoney(missingMoney)} EUR para llegar a 600 EUR.`;
+      totalMoney = MAX_MONEY;
     }
 
-    totalMoney = MAX_MONEY;
     updateMoneyUI(totalMoney);
-    modalMoney.innerText = totalMoney;
-  }, 1000);
+    modalMoney.innerText = formatMoney(totalMoney);
+  }, 720);
 }
 
-answerForm.addEventListener('submit', (e) => {
-  e.preventDefault();
+answerForm.addEventListener("submit", (event) => {
+  event.preventDefault();
 
-  const q = questionsData[currentQuestionIndex];
+  const question = questionsData[currentQuestionIndex];
   const userAnswerRaw = answerInput.value;
-  const currentPrize = parseInt(answerForm.dataset.currentPrize, 10);
+  const currentPrize = Number.parseInt(answerForm.dataset.currentPrize || "0", 10);
 
-  if (!userAnswerRaw.trim()) return;
+  if (!question || !userAnswerRaw.trim()) {
+    return;
+  }
 
   submitBtn.disabled = true;
   answerInput.disabled = true;
 
   const normalizedUser = normalizar(userAnswerRaw);
-  const normalizedCorrect = normalizar(q.answer);
+  const normalizedCorrect = normalizar(question.answer);
 
   if (normalizedUser === normalizedCorrect) {
-    // Acertó
     totalMoney += currentPrize;
     updateMoneyUI(totalMoney);
 
-    questionCard.classList.add('success');
-    feedbackMessage.innerText = "¡Respuesta Correcta!";
-    feedbackMessage.className = 'feedback-message show correct';
+    questionCard.classList.add("success");
+    setFeedback("Respuesta correcta.", "correct");
 
     setTimeout(() => {
-      questionCard.classList.remove('success');
-      submitBtn.disabled = false;
-      answerInput.disabled = false;
+      questionCard.classList.remove("success");
 
       if (totalMoney >= MAX_MONEY) {
         endGame(true);
-      } else {
-        currentQuestionIndex++;
-        loadNextQuestion();
+        return;
       }
-    }, 1500);
 
-  } else {
-    // Falló - mostrar consuelo y continuar
-    questionCard.classList.add('shake');
-    feedbackMessage.innerText = `¡Fallaste! La respuesta correcta era: ${q.answer}`;
-    feedbackMessage.className = 'feedback-message show wrong';
-
-    setTimeout(() => {
-      questionCard.classList.remove('shake');
-      submitBtn.disabled = false;
-      answerInput.disabled = false;
-
-      // Avanzar a la siguiente pregunta sin terminar el juego
-      currentQuestionIndex++;
+      currentQuestionIndex += 1;
       loadNextQuestion();
-    }, 800);
+    }, 1200);
+
+    return;
   }
+
+  questionCard.classList.add("shake");
+  setFeedback(`No era esa. La correcta era: ${question.answer}`, "wrong");
+
+  setTimeout(() => {
+    questionCard.classList.remove("shake");
+    currentQuestionIndex += 1;
+    loadNextQuestion();
+  }, 920);
 });
 
-restartBtn.addEventListener('click', () => {
+restartBtn.addEventListener("click", () => {
   currentQuestionIndex = 0;
   totalMoney = 0;
+  moneyAmountEl.dataset.value = "0";
   moneyAmountEl.innerText = "0";
-  modal.style.display = 'none';
+  modal.style.display = "none";
+  modalContent.classList.remove("lose");
   loadNextQuestion();
 });
 
-// Inicializar juego
 loadNextQuestion();

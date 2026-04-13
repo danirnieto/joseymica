@@ -1,26 +1,26 @@
 [
   {
-    "question": "¿Quién fue el primer emperador romano?",
+    "question": "Quien fue el primer emperador romano?",
     "answer": "Augusto",
     "prize": 150
   },
   {
-    "question": "¿En qué año llegó el hombre a la Luna?",
+    "question": "En que ano llego el hombre a la Luna?",
     "answer": "1969",
     "prize": 100
   },
   {
-    "question": "¿Cuál es el océano más grande del mundo?",
+    "question": "Cual es el oceano mas grande del mundo?",
     "answer": "Oceano Pacifico",
     "prize": 200
   },
   {
-    "question": "¿Qué pintor holandés se cortó la oreja?",
+    "question": "Que pintor holandes se corto la oreja?",
     "answer": "Van Gogh",
     "prize": 120
   },
   {
-    "question": "¿Cuál es la moneda oficial de Japón?",
+    "question": "Cual es la moneda oficial de Japon?",
     "answer": "Yen",
     "prize": 150
   }
