@@ -200,23 +200,6 @@ body::before {
   font-size: 0.95rem;
 }
 
-.progress-track {
-  position: relative;
-  overflow: hidden;
-  height: 12px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.07);
-}
-
-.progress-fill {
-  width: 0;
-  height: 100%;
-  border-radius: inherit;
-  background: linear-gradient(90deg, var(--mint), var(--gold));
-  box-shadow: 0 0 18px rgba(115, 240, 183, 0.32);
-  transition: width 320ms ease;
-}
-
 .game-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.45fr) minmax(260px, 0.85fr);
@@ -249,8 +232,7 @@ body::before {
   flex-wrap: wrap;
 }
 
-.prize-tag,
-.status-pill {
+.prize-tag {
   padding: 10px 14px;
   border-radius: 999px;
   font-size: 0.82rem;
@@ -263,12 +245,6 @@ body::before {
   background: rgba(244, 201, 93, 0.12);
   border: 1px solid rgba(244, 201, 93, 0.24);
   color: var(--gold-soft);
-}
-
-.status-pill {
-  background: rgba(115, 240, 183, 0.1);
-  border: 1px solid rgba(115, 240, 183, 0.24);
-  color: var(--mint);
 }
 
 .question-text {

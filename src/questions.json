@@ -1,202 +1,202 @@
 [
   {
-    "question": "¿Quién fue el primer emperador romano?",
-    "answer": "Augusto",
+    "question": "Quien fue el primer emperador romano?",
+    "answer": "augusto",
     "prize": 10
   },
   {
-    "question": "¿En qué año llegó el hombre a la Luna?",
+    "question": "En que ano llego el hombre a la Luna?",
     "answer": "1969",
     "prize": 20
   },
   {
-    "question": "¿Cuál es el océano más grande del mundo?",
-    "answer": "Oceano Pacifico",
+    "question": "Cual es el oceano mas grande del mundo?",
+    "answer": "oceanopacifico",
     "prize": 10
   },
   {
-    "question": "¿Qué pintor holandés se cortó la oreja?",
-    "answer": "Van Gogh",
+    "question": "Que pintor holandes se corto la oreja?",
+    "answer": "vangogh",
     "prize": 10
   },
   {
-    "question": "¿Cuál es la moneda oficial de Japón?",
-    "answer": "Yen",
+    "question": "Cual es la moneda oficial de Japon?",
+    "answer": "yen",
     "prize": 10
   },
   {
-    "question": "¿En qué año (a.C.) murió Julio César?",
+    "question": "En que ano a.C. murio Julio Cesar?",
     "answer": "44",
     "prize": 50
   },
   {
-    "question": "Qué famosa frase se atribuye a Julio César al cruzar el río Rubicón?",
-    "answer": "Alea iacta est",
+    "question": "Que famosa frase se atribuye a Julio Cesar al cruzar el rio Rubicon?",
+    "answer": "aleaiactaest",
     "prize": 10
   },
   {
-    "question": "¿Cuál es la capital de Sri Lanka?",
-    "answer": "Sri Jayawardenepura Kotte",
+    "question": "Cual es la capital de Sri Lanka?",
+    "answer": "srijayawardenepurakotte",
     "prize": 30
   },
   {
-    "question": "¿Cómo se llama la famosa ruina con rocas antiguas considerada patrimonio de la humanidad en Sri Lanka?",
-    "answer": "Sigiriya",
+    "question": "Como se llama la famosa ruina con rocas antiguas considerada patrimonio de la humanidad en Sri Lanka?",
+    "answer": "sigiriya",
     "prize": 50
   },
   {
-    "question": "¿Cuál es el antiguo nombre de Sri Lanka hasta 1972?",
-    "answer": "Ceilán",
+    "question": "Cual es el antiguo nombre de Sri Lanka hasta 1972?",
+    "answer": "ceilan",
     "prize": 50
   },
   {
     "question": "Escritor gallego nacido en Celanova",
-    "answer": "Celso Emilio Ferreiro",
+    "answer": "celsoemilioferreiro",
     "prize": 100
   },
   {
-    "question": "¿En qué siglo se fundó el monasterio de Celanova?",
-    "answer": "Siglo X",
+    "question": "En que siglo se fundo el monasterio de Celanova?",
+    "answer": "siglox",
     "prize": 30
   },
   {
-    "question": "¿Cómo se llama la prueba que mide la frecuencia cardíaca fetal y las contracciones uterinas?",
-    "answer": "Cardiotocografía",
+    "question": "Como se llama la prueba que mide la frecuencia cardiaca fetal y las contracciones uterinas?",
+    "answer": "cardiotocografia",
     "prize": 50
   },
   {
-    "question": "¿Cuál es el comando para tener en local la información de un repositorio ya descargado de GitHub?",
-    "answer": "git pull",
+    "question": "Cual es el comando para tener en local la informacion de un repositorio ya descargado de GitHub?",
+    "answer": "gitpull",
     "prize": 30
   },
   {
-    "question": "¿Cuál es la máxima cilindrada que ha existido en una moto (cc)?",
+    "question": "Cual es la maxima cilindrada que ha existido en una moto cc?",
     "answer": "2500",
     "prize": 70
   },
   {
-    "question": "¿Cuál es el único hueso del cuerpo no conectado a ningún otro? Nombre oficial",
-    "answer": "Hioides",
+    "question": "Cual es el unico hueso del cuerpo no conectado a ningun otro? Nombre oficial",
+    "answer": "hioides",
     "prize": 70
   },
   {
-    "question": "¿En honor a qué emperador se construyó el teatro romano de Cartagena?",
-    "answer": "Augusto",
+    "question": "En honor a que emperador se construyo el teatro romano de Cartagena?",
+    "answer": "augusto",
     "prize": 25
   },
   {
-    "question": "¿Quiénes son los cantantes de la canción \"Dardos\"?",
-    "answer": "Romeo Santos y Prince Royce",
+    "question": "Quienes son los cantantes de la cancion Dardos?",
+    "answer": "romeosantosyprinceroyce",
     "prize": 50
   },
   {
-    "question": "¿Cuál es el nombre artístico de William Bruce Rose Jr.?",
-    "answer": "Axl Rose",
+    "question": "Cual es el nombre artistico de William Bruce Rose Jr.?",
+    "answer": "axlrose",
     "prize": 100
   },
   {
-    "question": "¿Cuál es el nombre real de Bad Bunny?",
-    "answer": "Benito Antonio Martínez Ocasio",
+    "question": "Cual es el nombre real de Bad Bunny?",
+    "answer": "benitoantoniomartinezocasio",
     "prize": 125
   },
   {
-    "question": "¿Cuál es el % de composición de O2 en nuestra atmósfera?",
+    "question": "Cual es el porcentaje de composicion de O2 en nuestra atmosfera?",
     "answer": "21",
     "prize": 30
   },
   {
-    "question": "¿Qué distancia es capaz de ver el horizonte una persona que mida 1,7 m? En km, redondeado a 0,5 km",
-    "answer": "4,5",
+    "question": "Que distancia es capaz de ver el horizonte una persona que mida 1,7 m? En km, redondeado a 0,5 km",
+    "answer": "45",
     "prize": 100
   },
   {
-    "question": "¿Cuántos barcos de época fenicia se encontraron en la isla de Mazarrón?",
+    "question": "Cuantos barcos de epoca fenicia se encontraron en la isla de Mazarron?",
     "answer": "2",
     "prize": 100
   },
   {
-    "question": "¿Cuál es el precio del oro por kg hoy, redondeado a 5 mil?",
-    "answer": "Aproximadamente 130000 €/kg",
+    "question": "Cual es el precio del oro por kg hoy, redondeado a 5 mil?",
+    "answer": "130000",
     "prize": 50
   },
   {
-    "question": "¿En qué año se inventó el motor de vapor?",
+    "question": "En que ano se invento el motor de vapor?",
     "answer": "1712",
     "prize": 50
   },
   {
-    "question": "¿Qué animal de la familia de los Delphinidae es el más grande?",
-    "answer": "Orca",
+    "question": "Que animal de la familia de los Delphinidae es el mas grande?",
+    "answer": "orca",
     "prize": 50
   },
   {
-    "question": "Completa la frase \"Creo en Dios padre _____, creador...\"",
+    "question": "Completa la frase Creo en Dios padre _____, creador...",
     "answer": "todopoderoso",
     "prize": 10
   },
   {
-    "question": "¿Cuál es el animal nacional de Escocia?",
-    "answer": "Unicornio",
+    "question": "Cual es el animal nacional de Escocia?",
+    "answer": "unicornio",
     "prize": 30
   },
   {
-    "question": "¿En qué siglo comenzó a fundarse Edimburgo?",
-    "answer": "Siglo VII",
+    "question": "En que siglo comenzo a fundarse Edimburgo?",
+    "answer": "siglovii",
     "prize": 50
   },
   {
-    "question": "En que año fue el último viaje tripulado a la Luna antes del más reciente?",
+    "question": "En que ano fue el ultimo viaje tripulado a la Luna antes del mas reciente?",
     "answer": "1972",
     "prize": 50
   },
   {
-    "question": "¿Quién es conocido como el Rey del Pop?",
-    "answer": "Michael Jackson",
+    "question": "Quien es conocido como el Rey del Pop?",
+    "answer": "michaeljackson",
     "prize": 50
   },
   {
-    "question": "¿Qué banda interpretó \"Bohemian Rhapsody\"?",
-    "answer": "Queen",
+    "question": "Que banda interpreto Bohemian Rhapsody?",
+    "answer": "queen",
     "prize": 50
   },
   {
-    "question": "¿Quién pintó \"La noche estrellada\"?",
-    "answer": "Vincent van Gogh",
+    "question": "Quien pinto La noche estrellada?",
+    "answer": "vincentvangogh",
     "prize": 50
   },
   {
-    "question": "¿Qué artista esculpió \"El David\"?",
-    "answer": "Miguel Ángel",
+    "question": "Que artista esculpio El David?",
+    "answer": "miguelangel",
     "prize": 50
   },
   {
-    "question": "¿En qué año cayó el Imperio Romano de Occidente?",
+    "question": "En que ano cayo el Imperio Romano de Occidente?",
     "answer": "476",
     "prize": 50
   },
   {
-    "question": "¿Quién descubrió América en 1492?",
-    "answer": "Cristóbal Colón",
+    "question": "Quien descubrio America en 1492?",
+    "answer": "cristobalcolon",
     "prize": 50
   },
   {
-    "question": "¿Cuál es el río más largo del mundo?",
-    "answer": "Amazonas",
+    "question": "Cual es el rio mas largo del mundo?",
+    "answer": "amazonas",
     "prize": 50
   },
   {
-    "question": "¿Cuál es el país más grande del mundo?",
-    "answer": "Rusia",
+    "question": "Cual es el pais mas grande del mundo?",
+    "answer": "rusia",
     "prize": 50
   },
   {
-    "question": "¿Qué país ha ganado más Copas del Mundo de fútbol?",
-    "answer": "Brasil",
+    "question": "Que pais ha ganado mas Copas del Mundo de futbol?",
+    "answer": "brasil",
     "prize": 50
   },
   {
-    "question": "¿En qué deporte compite Rafa Nadal?",
-    "answer": "Tenis",
+    "question": "En que deporte compite Rafa Nadal?",
+    "answer": "tenis",
     "prize": 50
   }
 ]

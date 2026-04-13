@@ -8,10 +8,8 @@ let questionsData = [];
 const moneyAmountEl = document.getElementById("money-amount");
 const moneyDisplayEl = document.getElementById("money-display");
 const progressLabel = document.getElementById("progress-label");
-const progressFill = document.getElementById("progress-fill");
 const questionCard = document.getElementById("question-card");
 const prizeTag = document.getElementById("prize-tag");
-const statusPill = document.getElementById("status-pill");
 const statusLine = document.getElementById("status-line");
 const questionText = document.getElementById("question-text");
 const answerInput = document.getElementById("answer-input");
@@ -87,22 +85,11 @@ function updateMoneyUI(amount) {
 
 function updateProgressUI() {
   const totalQuestions = questionsData.length;
-  const visibleQuestion = Math.min(currentQuestionIndex + 1, totalQuestions);
-  const progress = totalQuestions
-    ? (visibleQuestion / totalQuestions) * 100
-    : 0;
+  const visibleQuestion = totalQuestions
+    ? Math.min(currentQuestionIndex + 1, totalQuestions)
+    : 1;
 
-  progressLabel.innerText =
-    currentQuestionIndex < totalQuestions
-      ? `Pregunta ${visibleQuestion}`
-      : "Pregunta final";
-
-  statusPill.innerText =
-    currentQuestionIndex < totalQuestions
-      ? `Ronda ${visibleQuestion}`
-      : "Final";
-
-  progressFill.style.width = `${Math.max(progress, 8)}%`;
+  progressLabel.innerText = `Pregunta ${visibleQuestion}`;
 }
 
 function clearFeedback() {
