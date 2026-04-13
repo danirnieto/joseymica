@@ -145,7 +145,9 @@ answerForm.addEventListener('submit', (e) => {
         loadNextQuestion();
       }
     }, 1500);
- - mostrar consuelo y continuar
+
+  } else {
+    // Falló - mostrar consuelo y continuar
     questionCard.classList.add('shake');
     feedbackMessage.innerText = `¡Fallaste! La respuesta correcta era: ${q.answer}`;
     feedbackMessage.className = 'feedback-message show wrong';
@@ -157,9 +159,7 @@ answerForm.addEventListener('submit', (e) => {
 
       // Avanzar a la siguiente pregunta sin terminar el juego
       currentQuestionIndex++;
-      loadNextQuestion(
-      answerInput.disabled = false;
-      endGame(false, `La respuesta correcta era: ${q.answer}`);
+      loadNextQuestion();
     }, 800);
   }
 });
