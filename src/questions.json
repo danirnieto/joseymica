@@ -1,27 +1,202 @@
 [
   {
-    "question": "Quien fue el primer emperador romano?",
+    "question": "¿Quién fue el primer emperador romano?",
     "answer": "Augusto",
-    "prize": 150
+    "prize": 10
   },
   {
-    "question": "En que ano llego el hombre a la Luna?",
+    "question": "¿En qué año llegó el hombre a la Luna?",
     "answer": "1969",
+    "prize": 20
+  },
+  {
+    "question": "¿Cuál es el océano más grande del mundo?",
+    "answer": "Oceano Pacifico",
+    "prize": 10
+  },
+  {
+    "question": "¿Qué pintor holandés se cortó la oreja?",
+    "answer": "Van Gogh",
+    "prize": 10
+  },
+  {
+    "question": "¿Cuál es la moneda oficial de Japón?",
+    "answer": "Yen",
+    "prize": 10
+  },
+  {
+    "question": "¿En qué año (a.C.) murió Julio César?",
+    "answer": "44",
+    "prize": 50
+  },
+  {
+    "question": "Qué famosa frase se atribuye a Julio César al cruzar el río Rubicón?",
+    "answer": "Alea iacta est",
+    "prize": 10
+  },
+  {
+    "question": "¿Cuál es la capital de Sri Lanka?",
+    "answer": "Sri Jayawardenepura Kotte",
+    "prize": 30
+  },
+  {
+    "question": "¿Cómo se llama la famosa ruina con rocas antiguas considerada patrimonio de la humanidad en Sri Lanka?",
+    "answer": "Sigiriya",
+    "prize": 50
+  },
+  {
+    "question": "¿Cuál es el antiguo nombre de Sri Lanka hasta 1972?",
+    "answer": "Ceilán",
+    "prize": 50
+  },
+  {
+    "question": "Escritor gallego nacido en Celanova",
+    "answer": "Celso Emilio Ferreiro",
     "prize": 100
   },
   {
-    "question": "Cual es el oceano mas grande del mundo?",
-    "answer": "Oceano Pacifico",
-    "prize": 200
+    "question": "¿En qué siglo se fundó el monasterio de Celanova?",
+    "answer": "Siglo X",
+    "prize": 30
   },
   {
-    "question": "Que pintor holandes se corto la oreja?",
-    "answer": "Van Gogh",
-    "prize": 120
+    "question": "¿Cómo se llama la prueba que mide la frecuencia cardíaca fetal y las contracciones uterinas?",
+    "answer": "Cardiotocografía",
+    "prize": 50
   },
   {
-    "question": "Cual es la moneda oficial de Japon?",
-    "answer": "Yen",
-    "prize": 150
+    "question": "¿Cuál es el comando para tener en local la información de un repositorio ya descargado de GitHub?",
+    "answer": "git pull",
+    "prize": 30
+  },
+  {
+    "question": "¿Cuál es la máxima cilindrada que ha existido en una moto (cc)?",
+    "answer": "2500",
+    "prize": 70
+  },
+  {
+    "question": "¿Cuál es el único hueso del cuerpo no conectado a ningún otro? Nombre oficial",
+    "answer": "Hioides",
+    "prize": 70
+  },
+  {
+    "question": "¿En honor a qué emperador se construyó el teatro romano de Cartagena?",
+    "answer": "Augusto",
+    "prize": 25
+  },
+  {
+    "question": "¿Quiénes son los cantantes de la canción \"Dardos\"?",
+    "answer": "Romeo Santos y Prince Royce",
+    "prize": 50
+  },
+  {
+    "question": "¿Cuál es el nombre artístico de William Bruce Rose Jr.?",
+    "answer": "Axl Rose",
+    "prize": 100
+  },
+  {
+    "question": "¿Cuál es el nombre real de Bad Bunny?",
+    "answer": "Benito Antonio Martínez Ocasio",
+    "prize": 125
+  },
+  {
+    "question": "¿Cuál es el % de composición de O2 en nuestra atmósfera?",
+    "answer": "21",
+    "prize": 30
+  },
+  {
+    "question": "¿Qué distancia es capaz de ver el horizonte una persona que mida 1,7 m? En km, redondeado a 0,5 km",
+    "answer": "4,5",
+    "prize": 100
+  },
+  {
+    "question": "¿Cuántos barcos de época fenicia se encontraron en la isla de Mazarrón?",
+    "answer": "2",
+    "prize": 100
+  },
+  {
+    "question": "¿Cuál es el precio del oro por kg hoy, redondeado a 5 mil?",
+    "answer": "Aproximadamente 130000 €/kg",
+    "prize": 50
+  },
+  {
+    "question": "¿En qué año se inventó el motor de vapor?",
+    "answer": "1712",
+    "prize": 50
+  },
+  {
+    "question": "¿Qué animal de la familia de los Delphinidae es el más grande?",
+    "answer": "Orca",
+    "prize": 50
+  },
+  {
+    "question": "Completa la frase \"Creo en Dios padre _____, creador...\"",
+    "answer": "todopoderoso",
+    "prize": 10
+  },
+  {
+    "question": "¿Cuál es el animal nacional de Escocia?",
+    "answer": "Unicornio",
+    "prize": 30
+  },
+  {
+    "question": "¿En qué siglo comenzó a fundarse Edimburgo?",
+    "answer": "Siglo VII",
+    "prize": 50
+  },
+  {
+    "question": "En que año fue el último viaje tripulado a la Luna antes del más reciente?",
+    "answer": "1972",
+    "prize": 50
+  },
+  {
+    "question": "¿Quién es conocido como el Rey del Pop?",
+    "answer": "Michael Jackson",
+    "prize": 50
+  },
+  {
+    "question": "¿Qué banda interpretó \"Bohemian Rhapsody\"?",
+    "answer": "Queen",
+    "prize": 50
+  },
+  {
+    "question": "¿Quién pintó \"La noche estrellada\"?",
+    "answer": "Vincent van Gogh",
+    "prize": 50
+  },
+  {
+    "question": "¿Qué artista esculpió \"El David\"?",
+    "answer": "Miguel Ángel",
+    "prize": 50
+  },
+  {
+    "question": "¿En qué año cayó el Imperio Romano de Occidente?",
+    "answer": "476",
+    "prize": 50
+  },
+  {
+    "question": "¿Quién descubrió América en 1492?",
+    "answer": "Cristóbal Colón",
+    "prize": 50
+  },
+  {
+    "question": "¿Cuál es el río más largo del mundo?",
+    "answer": "Amazonas",
+    "prize": 50
+  },
+  {
+    "question": "¿Cuál es el país más grande del mundo?",
+    "answer": "Rusia",
+    "prize": 50
+  },
+  {
+    "question": "¿Qué país ha ganado más Copas del Mundo de fútbol?",
+    "answer": "Brasil",
+    "prize": 50
+  },
+  {
+    "question": "¿En qué deporte compite Rafa Nadal?",
+    "answer": "Tenis",
+    "prize": 50
   }
 ]

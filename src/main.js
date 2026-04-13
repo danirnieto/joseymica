@@ -1,12 +1,9 @@
-import "./style.css";
-import questionsData from "./questions.json";
-
 const MAX_MONEY = 600;
-const TOTAL_QUESTIONS = questionsData.length;
 
 let currentQuestionIndex = 0;
 let totalMoney = 0;
 let moneyAnimationFrame = null;
+let questionsData = [];
 
 const moneyAmountEl = document.getElementById("money-amount");
 const moneyDisplayEl = document.getElementById("money-display");
@@ -89,18 +86,19 @@ function updateMoneyUI(amount) {
 }
 
 function updateProgressUI() {
-  const visibleQuestion = Math.min(currentQuestionIndex + 1, TOTAL_QUESTIONS);
-  const progress = TOTAL_QUESTIONS
-    ? (visibleQuestion / TOTAL_QUESTIONS) * 100
+  const totalQuestions = questionsData.length;
+  const visibleQuestion = Math.min(currentQuestionIndex + 1, totalQuestions);
+  const progress = totalQuestions
+    ? (visibleQuestion / totalQuestions) * 100
     : 0;
 
   progressLabel.innerText =
-    currentQuestionIndex < TOTAL_QUESTIONS
-      ? `Pregunta ${visibleQuestion} de ${TOTAL_QUESTIONS}`
+    currentQuestionIndex < totalQuestions
+      ? `Pregunta ${visibleQuestion} de ${totalQuestions}`
       : "Juego completo";
 
   statusPill.innerText =
-    currentQuestionIndex < TOTAL_QUESTIONS
+    currentQuestionIndex < totalQuestions
       ? `Ronda ${visibleQuestion}`
       : "Final";
 
@@ -118,7 +116,7 @@ function setFeedback(message, type) {
 }
 
 function loadNextQuestion() {
-  if (currentQuestionIndex >= TOTAL_QUESTIONS) {
+  if (currentQuestionIndex >= questionsData.length) {
     endGame(false, "Te has quedado sin preguntas.");
     return;
   }
@@ -231,4 +229,35 @@ restartBtn.addEventListener("click", () => {
   loadNextQuestion();
 });
 
-loadNextQuestion();
+async function loadQuestions() {
+  const response = await fetch("./src/questions.json", {
+    cache: "no-store",
+  });
+
+  if (!response.ok) {
+    throw new Error(`No se pudieron cargar las preguntas: ${response.status}`);
+  }
+
+  return response.json();
+}
+
+async function initGame() {
+  try {
+    questionsData = await loadQuestions();
+
+    if (!Array.isArray(questionsData) || questionsData.length === 0) {
+      throw new Error("El banco de preguntas esta vacio.");
+    }
+
+    loadNextQuestion();
+  } catch (error) {
+    questionText.innerText = "No se pudo iniciar el juego.";
+    statusLine.innerText =
+      "Fallo al cargar las preguntas. Revisa el despliegue del JSON.";
+    answerInput.disabled = true;
+    submitBtn.disabled = true;
+    setFeedback(error.message, "wrong");
+  }
+}
+
+initGame();
