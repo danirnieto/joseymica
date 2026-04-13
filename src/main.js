@@ -43,12 +43,12 @@ function updateMoneyUI(amount) {
   let currentStep = 0;
 
   moneyDisplayEl.classList.add('pulse');
-  
+
   const interval = setInterval(() => {
     currentStep++;
     current += stepValue;
     moneyAmountEl.innerText = Math.floor(current);
-    
+
     if (currentStep >= steps) {
       clearInterval(interval);
       moneyAmountEl.innerText = target;
@@ -60,12 +60,12 @@ function updateMoneyUI(amount) {
 function loadNextQuestion() {
   if (currentQuestionIndex >= questionsData.length) {
     // Te quedaste sin preguntas, pero te llevas el total + consolación hasta 600
-    endGame(false, "Te has quedado sin preguntas.");
+    endGame(true, "Te has quedado sin preguntas.");
     return;
   }
 
   const q = questionsData[currentQuestionIndex];
-  
+
   // Calcular el premio con el CAP
   let availableToWin = q.prize;
   if (totalMoney + q.prize > MAX_MONEY) {
@@ -77,30 +77,32 @@ function loadNextQuestion() {
   answerInput.value = '';
   feedbackMessage.className = 'feedback-message';
   feedbackMessage.innerText = '';
-  
+
   // Guardamos el premio real disponible temporalmente en el form
   answerForm.dataset.currentPrize = availableToWin;
-  
+
   answerInput.focus();
 }
 
 function endGame(isWin, customReason = "") {
   setTimeout(() => {
     modal.style.display = 'flex';
-    
-    if (isWin) {
+
+    if (totalMoney >= MAX_MONEY) {
+      // Ganó el jackpot
       modalTitle.innerText = "¡JACKPOT!";
       modalSubtitle.innerText = "Has alcanzado el premio máximo.";
       modalMessage.innerText = "¡Increíble jugada! Eres un genio.";
       document.querySelector('.modal-content').classList.remove('lose');
     } else {
+      // Se acabaron las preguntas o no alcanzó el máximo
       const missing = MAX_MONEY - totalMoney;
-      modalTitle.innerText = "QUÉ PENA...";
-      modalSubtitle.innerText = "Has fallado la pregunta.";
-      modalMessage.innerText = `${customReason}\nPero no te preocupes, como premio de consolación te sumamos los ${missing}€ que te faltaban para llegar a 600€!!`;
+      modalTitle.innerText = "¡JUEGO TERMINADO!";
+      modalSubtitle.innerText = "Fin de las preguntas";
+      modalMessage.innerText = `${customReason}\nComo premio de consolación te sumamos los ${missing}€ que te faltaban para llegar a 600€!!`;
       document.querySelector('.modal-content').classList.add('lose');
     }
-    
+
     totalMoney = MAX_MONEY;
     updateMoneyUI(totalMoney);
     modalMoney.innerText = totalMoney;
@@ -109,13 +111,13 @@ function endGame(isWin, customReason = "") {
 
 answerForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  
+
   const q = questionsData[currentQuestionIndex];
   const userAnswerRaw = answerInput.value;
   const currentPrize = parseInt(answerForm.dataset.currentPrize, 10);
-  
+
   if (!userAnswerRaw.trim()) return;
-  
+
   submitBtn.disabled = true;
   answerInput.disabled = true;
 
@@ -126,16 +128,16 @@ answerForm.addEventListener('submit', (e) => {
     // Acertó
     totalMoney += currentPrize;
     updateMoneyUI(totalMoney);
-    
+
     questionCard.classList.add('success');
     feedbackMessage.innerText = "¡Respuesta Correcta!";
     feedbackMessage.className = 'feedback-message show correct';
-    
+
     setTimeout(() => {
       questionCard.classList.remove('success');
       submitBtn.disabled = false;
       answerInput.disabled = false;
-      
+
       if (totalMoney >= MAX_MONEY) {
         endGame(true);
       } else {
@@ -143,16 +145,19 @@ answerForm.addEventListener('submit', (e) => {
         loadNextQuestion();
       }
     }, 1500);
-
-  } else {
-    // Falló
+ - mostrar consuelo y continuar
     questionCard.classList.add('shake');
-    feedbackMessage.innerText = "¡Fallaste!";
+    feedbackMessage.innerText = `¡Fallaste! La respuesta correcta era: ${q.answer}`;
     feedbackMessage.className = 'feedback-message show wrong';
-    
+
     setTimeout(() => {
       questionCard.classList.remove('shake');
       submitBtn.disabled = false;
+      answerInput.disabled = false;
+
+      // Avanzar a la siguiente pregunta sin terminar el juego
+      currentQuestionIndex++;
+      loadNextQuestion(
       answerInput.disabled = false;
       endGame(false, `La respuesta correcta era: ${q.answer}`);
     }, 800);
