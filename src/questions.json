@@ -105,7 +105,7 @@
     "prize": 30
   },
   {
-    "question": "Que distancia es capaz de ver el horizonte una persona que mida 1,7 m? En km, redondeado a 0,5 km",
+    "question": "Suponiendo una tierra NO PLANA, que distancia es capaz de ver el horizonte una persona que mida 1,7 m? En km, redondeado a 0,5 km",
     "answer": "45",
     "prize": 100
   },
@@ -130,7 +130,7 @@
     "prize": 50
   },
   {
-    "question": "Completa la frase Creo en Dios padre _____, creador...",
+    "question": "Para josote principalmente: Completa la frase Creo en Dios padre _____, creador...",
     "answer": "todopoderoso",
     "prize": 10
   },
