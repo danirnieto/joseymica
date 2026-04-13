@@ -1,0 +1,27 @@
+[
+  {
+    "question": "¿Quién fue el primer emperador romano?",
+    "answer": "Augusto",
+    "prize": 150
+  },
+  {
+    "question": "¿En qué año llegó el hombre a la Luna?",
+    "answer": "1969",
+    "prize": 100
+  },
+  {
+    "question": "¿Cuál es el océano más grande del mundo?",
+    "answer": "Oceano Pacifico",
+    "prize": 200
+  },
+  {
+    "question": "¿Qué pintor holandés se cortó la oreja?",
+    "answer": "Van Gogh",
+    "prize": 120
+  },
+  {
+    "question": "¿Cuál es la moneda oficial de Japón?",
+    "answer": "Yen",
+    "prize": 150
+  }
+]

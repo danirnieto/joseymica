@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jackpot Quiz</title>
+  </head>
+  <body>
+    <div id="app">
+      <header class="header">
+        <h1 class="logo">JACKPOT QUIZ</h1>
+        <div class="money-display" id="money-display">
+          <span class="currency">€</span><span id="money-amount">0</span>
+        </div>
+      </header>
+      
+      <main class="game-container" id="game-container">
+        <!-- Question Area -->
+        <div class="card" id="question-card">
+          <div class="prize-tag" id="prize-tag">Premio: 100€</div>
+          <h2 id="question-text" class="question-text">Cargando pregunta...</h2>
+          
+          <form id="answer-form" class="answer-form">
+            <input 
+              type="text" 
+              id="answer-input" 
+              class="answer-input" 
+              placeholder="Escribe tu respuesta aquí..."
+              autocomplete="off"
+            />
+            <button type="submit" class="submit-btn" id="submit-btn">APOSTAR TODO</button>
+          </form>
+          <div id="feedback-message" class="feedback-message"></div>
+        </div>
+      </main>
+
+      <!-- Win / Lose Modal -->
+      <div class="modal" id="modal" style="display: none;">
+        <div class="modal-content">
+          <h1 id="modal-title" class="neon-text">JACKPOT!</h1>
+          <h2 id="modal-subtitle">Has ganado el premio máximo.</h2>
+          <div class="final-prize">
+            <span class="currency">€</span><span id="modal-money">600</span>
+          </div>
+          <p id="modal-message">¡Increíble jugada!</p>
+          <button id="restart-btn" class="submit-btn">JUGAR DE NUEVO</button>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
