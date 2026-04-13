@@ -94,8 +94,8 @@ function updateProgressUI() {
 
   progressLabel.innerText =
     currentQuestionIndex < totalQuestions
-      ? `Pregunta ${visibleQuestion} de ${totalQuestions}`
-      : "Juego completo";
+      ? `Pregunta ${visibleQuestion}`
+      : "Pregunta final";
 
   statusPill.innerText =
     currentQuestionIndex < totalQuestions
